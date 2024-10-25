@@ -1,0 +1,249 @@
+body {
+  background: linear-gradient(135deg, #f7f7f7, #ffffff);
+  font-family: 'Lato', sans-serif;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background: linear-gradient(45deg, #333, #888);
+  padding: 10px 20px; /* Aumenta o espaço interno do cabeçalho */
+  display: flex;
+  justify-content: space-between; /* Espaça os elementos do cabeçalho */
+  align-items: center; /* Alinha verticalmente todos os itens */
+  height: 60px; /* Altura do cabeçalho */
+}
+
+.adorno h1 {
+  font-size: 1.5rem;
+  color: gold;
+  margin: 0; /* Remove margens para melhor alinhamento */
+  white-space: nowrap; /* Impede a quebra de linha */
+}
+
+nav {
+  display: flex;
+  justify-content: center; /* Centraliza os itens do nav */
+  align-items: center; /* Alinha verticalmente os itens */
+  flex-grow: 1; /* Permite que o nav cresça para ocupar espaço */
+}
+
+.menu-navegacao {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex; /* Exibe os itens em linha */
+  align-items: center; /* Alinha verticalmente os itens do menu */
+}
+
+.menu-navegacao li {
+  margin: 0 1rem; /* Espaçamento entre os itens do menu */
+}
+
+.menu-navegacao a {
+  text-decoration: none;
+  color: gold;
+  font-size: 16px;
+  padding: 5px 10px;
+  display: block;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.menu-navegacao a:hover {
+  background-color: #555;
+}
+
+.login-icon {
+  margin-left: auto; /* Move o ícone de perfil para a direita */
+}
+
+.login-icon img {
+  width: 40px; /* Ajuste o tamanho do ícone */
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.login-icon img:hover {
+  transform: scale(1.1); /* Leve aumento no hover */
+}
+
+main {
+  padding: 1.4rem;
+  margin: 0 auto;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #555;
+  border-radius: 0.5rem;
+  justify-content: center; /* Centraliza os itens caso tenha menos de 6 */
+  gap: 1.5rem; /* Espaçamento entre os produtos */
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 3rem auto;
+}
+
+/* Cada produto ocupará até 30% do container, permitindo 3 por linha */
+.exibicao {
+  flex: 1 1 calc(30% - 1.5rem); /* 3 produtos por linha */
+  background-color: #ffffff;
+  margin: 1.5rem;
+  box-shadow: 0 0.125rem 0.250rem rgba(0, 0, 0, 0.2);
+  border-radius: 0.5rem;
+  text-align: center;
+  padding: 1rem;
+  box-sizing: border-box;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.exibicao img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+  padding: 1rem 0;
+}
+
+.exibicao:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0.250rem 0.5rem rgba(0, 0, 0, 0.3);
+}
+
+.exibicao .info {
+  padding: 1rem;
+}
+
+.exibicao .titulo {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: gold;
+  margin-bottom: 0.5rem;
+}
+
+.exibicao .descricao {
+  font-size: 1rem;
+  color: #888;
+  margin: 0.5rem 0;
+}
+
+.exibicao .cor {
+  font-size: 0.9rem;
+  color: #888;
+  margin: 0.5rem 0;
+}
+
+.exibicao input[type="button"] {
+  background-color: #333;
+  color: gold;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.exibicao input[type="button"]:hover {
+  background-color: #555;
+}
+
+/* Responsividade para 2 produtos em telas menores */
+@media (max-width: 768px) {
+  .exibicao {
+      flex: 1 1 calc(45% - 1.5rem); /* 2 produtos por linha */
+  }
+}
+
+/* Responsividade para 1 produto em telas muito pequenas */
+@media (max-width: 480px) {
+  .exibicao {
+      flex: 1 1 100%; /* 1 produto por linha */
+  }
+}
+
+/* Seção de Sobre Nós */
+.sobre-nos {
+  border-radius: 20px 20px 0 0;
+  padding: 3rem 1rem;
+  background-color: #333;
+  text-align: center;
+}
+
+.sobre-nos h2 {
+  font-size: 2.5rem;
+  color: gold;
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+}
+
+.sobre-nos p {
+  font-size: 1.2rem;
+  color: #ccc;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* Seção de Contato */
+.contato {
+  border-radius: 0 0 20px 20px;
+  padding: 3rem 1rem;
+  background-color: #555;
+  text-align: center;
+  color: gold;
+}
+
+.contato h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+}
+
+.contato p {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+/* intro */
+.intro {
+  background: linear-gradient(135deg, #333, #888);
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  color: gold;
+}
+
+.intro h2 {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+  font-weight: bold;
+}
+
+.intro p {
+  font-size: 1.1rem;
+  margin: 0;
+  max-width: 550px;
+  line-height: 1.5;
+  margin: 0 auto;
+  color: #f9f9f9;
+}
+
+/* footer */
+footer {
+  background-color: #000;
+  color: #f9f9f9;
+  text-align: center;
+  padding: 1.5rem 0;
+  border-top: 3px solid gold;
+  margin-top: 2rem;
+}
+
+footer p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #888;
+}
