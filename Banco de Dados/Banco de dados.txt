@@ -1,0 +1,73 @@
+CREATE TABLE usuarios (
+    id_usuario INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    senha VARCHAR(255) NOT NULL,
+    tipo_usuario VARCHAR(255),  -- Usando VARCHAR em vez de ENUM
+    data_criacao DATE
+);
+
+CREATE TABLE categorias (
+    id_categoria INT AUTO_INCREMENT PRIMARY KEY,
+    nome_categoria VARCHAR(100)
+);
+
+CREATE TABLE produtos (
+    id_produto INT AUTO_INCREMENT PRIMARY KEY,
+    nome_produto VARCHAR(100) NOT NULL,
+    descricao_produto TEXT,
+    preco_produto DECIMAL(10, 2) NOT NULL,
+    categoria_id INT,
+    estoque_produto INT NOT NULL,
+    data_criacao_produto DATE,
+    FOREIGN KEY (categoria_id) REFERENCES categorias(id_categoria)
+);
+
+CREATE TABLE pedidos (
+    id_pedidos INT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT,
+    data_pedido DATE,
+    status_pedido VARCHAR(255),  -- Usando VARCHAR em vez de ENUM
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id_usuario)
+);
+
+CREATE TABLE itens_pedido (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    pedido_id INT,
+    produto_id INT,
+    quantidade INT NOT NULL,
+    preco_unitario DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (pedido_id) REFERENCES pedidos(id_pedidos),
+    FOREIGN KEY (produto_id) REFERENCES produtos(id_produto)
+);
+
+CREATE TABLE enderecos (
+    id_endereco INT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT,
+    endereco VARCHAR(255) NOT NULL,
+    cidade VARCHAR(100) NOT NULL,
+    estado VARCHAR(100) NOT NULL,
+    cep VARCHAR(20) NOT NULL,
+    pais VARCHAR(100) NOT NULL,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id_usuario)
+);
+
+CREATE TABLE pagamentos (
+    id_pagamento INT AUTO_INCREMENT PRIMARY KEY,
+    pedido_id INT,
+    metodo_pagamento VARCHAR(255),  -- Usando VARCHAR em vez de ENUM
+    valor_pagamento DECIMAL(10, 2) NOT NULL,
+    data_pagamento DATE,
+    FOREIGN KEY (pedido_id) REFERENCES pedidos(id_pedidos)
+);
+
+CREATE TABLE avaliacoes (
+    id_avaliacao INT AUTO_INCREMENT PRIMARY KEY,
+    produto_id INT,
+    usuario_id INT,
+    nota_avaliacao INT,
+    comentario_avaliacao VARCHAR(255),
+    data_avaliacao DATE,
+    FOREIGN KEY (produto_id) REFERENCES produtos(id_produto),
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id_usuario)
+);
