@@ -29,10 +29,16 @@ class ProdutoController extends Controller
             'descricao_produto' => 'required|string|max:255',
             'preco_produto' => 'required|numeric',
             'estoque_produto' => 'required|integer',
+            'imagem' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Validação da imagem
         ]);
 
+        // Salvar a imagem
+        if ($request->hasFile('imagem')) {
+            $imagemPath = $request->file('imagem')->store('imagens/produtos', 'public'); // Armazena no diretório public/imagens/produtos
+        }
+
         // Criar o produto no banco de dados
-        Produto::create($request->all());
+        Produto::create(array_merge($request->all(), ['imagem' => $imagemPath])); // Armazena o caminho da imagem
         return redirect()->route('produto.index')->with('success', 'Produto criado com sucesso!');
     }
 
@@ -55,9 +61,17 @@ class ProdutoController extends Controller
             'descricao_produto' => 'required|string|max:255',
             'preco_produto' => 'required|numeric',
             'estoque_produto' => 'required|integer',
+            'imagem' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', 
         ]);
-
-        $produto->update($request->all());
+    
+        // Atualizar os dados do produto
+        $data = $request->all();
+    
+        if ($request->hasFile('imagem')) {
+            $path = $request->file('imagem')->store('imagens/produtos', 'public');
+            $data['imagem'] = $path; }
+    
+        $produto->update($data);
         return redirect()->route('produto.index')->with('success', 'Produto atualizado com sucesso!');
     }
 

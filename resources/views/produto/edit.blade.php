@@ -1,9 +1,10 @@
+{{-- Formulário de Edição --}}
 @extends('admin_template.index')
 
 @section('conteudo')
 <div id="event-create-container" class="col-md-6 offset-md-3">
-    <h1>Editar Produto</h1>  
-    <form action="{{ route('produto.update', $produto->id_produto) }}" method="post">
+    <h1>Editar Produto</h1>
+    <form action="{{ route('produto.update', $produto->id_produto) }}" method="post" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="form-group">
@@ -21,7 +22,6 @@
                 @endforeach
             </select>
         </div>
-        
 
         <div class="form-group">
             <label for="descricao_produto">Descrição do Produto:</label>
@@ -38,11 +38,17 @@
             <input type="number" class="form-control" id="estoque_produto" name="estoque_produto" value="{{ $produto->estoque_produto }}" required>
         </div>
 
-       
+        <div class="form-group">
+            <label for="imagem_produto">Imagem do Produto:</label>
+            <input type="file" class="form-control" id="imagem_produto" name="imagem_produto" accept="image/*">
+            @if($produto->imagem_produto) <!-- Mostrar a imagem existente, se houver -->
+                <img src="{{ asset('storage/' . $produto->imagem_produto) }}" alt="Imagem do Produto" class="img-thumbnail mt-2" style="max-width: 200px;">
+            @endif
+        </div>
 
         <br>
-        <a href="{{ route('usuario.index')}}" class="btn btn-danger">Cancelar</a>
-        <input type="submit" class="btn btn-success" value="Atualizar">    
+        <a href="{{ route('usuario.index') }}" class="btn btn-danger">Cancelar</a>
+        <input type="submit" class="btn btn-success" value="Atualizar">
     </form>
 </div>
 @endsection

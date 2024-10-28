@@ -4,18 +4,18 @@
 
 <main>
     <div class="container">
-        @foreach($produto as $produto)
+        @foreach($produto as $produto) 
             <div class="exibicao">
-                <img src="/assets/img/conjuntoVermelho.png">
+                <img src="{{ asset('storage/' . $produto->imagem) }}" alt="{{ $produto->nome_produto }}">
                 <div class="info">
-                    <p class="titulo">{{ $produto->nome_produto }}</p>                                
-                    <p class="descricao">{{ $produto->descricao_produto}}</p>
-                    <p class="cor">{{ $produto->categoria->nome_categoria }}</p>
-                    <input type="button" value="R$ {{ number_format($produto->preco_produto, 2, ',', '.') }}" class="preco-btn">
+                    <div class="titulo">{{ $produto->nome_produto }}</div>
+                    <div class="descricao">{{ $produto->descricao_produto }}</div>
+                    <p class="cor">{{ $produto->categoria->nome_categoria }}</p> 
+                    <a href="{{ route('home.show', $produto->id_produto) }}" class="btn btn-primary">Ver Mais</a> <!-- Roteamento para a página do produto -->
                 </div>
             </div>
         @endforeach
-    </div>    
+    </div> 
 </main>
 
 @endsection

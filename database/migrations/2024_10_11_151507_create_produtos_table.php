@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('descricao_produto');
             $table->float('preco_produto');
             $table->integer('estoque_produto');
+            $table->string('imagem')->nullable();
 
             $table->timestamps();
         });

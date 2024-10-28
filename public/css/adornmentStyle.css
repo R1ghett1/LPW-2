@@ -48,11 +48,12 @@ nav {
   padding: 5px 10px;
   display: block;
   border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
+  transition: background-color 0.3s;
+} 
 
 .menu-navegacao a:hover {
   background-color: #555;
+  color: #fff;
 }
 
 .login-icon {
@@ -247,3 +248,92 @@ footer p {
   font-size: 0.9rem;
   color: #888;
 }
+
+
+#contato-container {
+  margin-top: 2rem;
+  background-color: #555; /* Cor do cabeçalho */
+  border-radius: 0.5rem; /* Bordas arredondadas */
+  padding: 2rem;
+  color: #f9f9f9; /* Texto claro para contraste */
+}
+
+#contato-container h1 {
+  text-align: center; /* Centraliza o título */
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: gold; /* Espaço abaixo do título */
+}
+
+.informacoes {
+  background: #989898; /* Fundo escuro para informações de contato */
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  color: #fff; /* Cor do texto clara para contraste */
+  margin-bottom: 1.5rem; /* Espaço abaixo da seção de informações */
+}
+
+.informacoes h3 {
+  color: gold; /* Título em dourado */
+  text-align: center; /* Centraliza o título */
+}
+
+.informacoes p {
+  margin: 0.5rem 0; /* Espaço entre os parágrafos */
+  text-align: center; /* Centraliza o texto dos parágrafos */
+}
+
+.informacoes p > strong {
+  color: gold;
+}
+
+.informacoes a {
+  color: inherit; /* Mantém a cor do texto do parágrafo */
+  text-decoration: none; /* Remove o sublinhado */
+}
+
+.informacoes a:hover {
+  text-decoration: underline; /* Adiciona sublinhado ao passar o mouse */
+}
+
+
+form {
+  background-color: #555; /* Cor do cabeçalho para o formulário */
+  padding: 1.5rem; /* Espaçamento interno do formulário */
+  border-radius: 0.5rem; /* Bordas arredondadas */
+}
+
+.form-group label {
+  font-weight: bold; /* Negrito para rótulos */
+  color: #f9f9f9; /* Cor clara para os rótulos */
+}
+
+.form-group .p {
+  color: gold;
+}
+
+.form-control {
+  background-color: #fff; /* Fundo branco para campos de entrada */
+  color: #333; /* Cor do texto nos campos de entrada */
+}
+
+.btn-success {
+  background-color: gold; /* Cor do botão de enviar */
+  border: none; /* Remove a borda do botão */
+}
+
+.btn-success:hover {
+  background-color: #d4af37; /* Cor do botão no hover */
+}
+
+.btn-danger {
+  background-color: #dc3545; /* Cor do botão de cancelar */
+  border: none; /* Remove a borda do botão */
+}
+
+.btn-danger:hover {
+  background-color: #c82333; /* Cor do botão no hover */
+}
+
+
