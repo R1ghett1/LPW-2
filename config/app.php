@@ -119,8 +119,37 @@ return [
     */
 
     'maintenance' => [
-        'driver' => env('APP_MAINTENANCE_DRIVER', 'file'),
-        'store' => env('APP_MAINTENANCE_STORE', 'database'),
+    'driver' => env('APP_MAINTENANCE_DRIVER', 'file'),
+    'store' => env('APP_MAINTENANCE_STORE', 'file'),
+],
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Autoloaded Service Providers
+    |--------------------------------------------------------------------------
+    |
+    | The service providers listed here will be automatically loaded on the
+    | request to your application. Feel free to add your own services to
+    | this array to grant expanded functionality to your applications.
+    |
+    */
+
+    '
+
+    providers' => [
+
+        /*
+        * Laravel Framework Service Providers...
+        */
+
+        'LivePixel\MercadoPago\Providers\MercadoPagoServiceProvider',
     ],
+
+    'aliases' => [
+        // Outros alias 
+
+        'MP' => 'LivePixel\MercadoPago\Facades\MP',
+    ]
 
 ];

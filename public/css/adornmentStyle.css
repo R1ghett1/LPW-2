@@ -1,44 +1,46 @@
-body {
-  background: linear-gradient(135deg, #f7f7f7, #ffffff);
-  font-family: 'Lato', sans-serif;
-  color: #333;
+html, body {
+  height: 100%;
   margin: 0;
   padding: 0;
+  font-family: 'Lato', sans-serif;
+  color: #333;
+  background: linear-gradient(135deg, #f7f7f7, #ffffff);
 }
+
 
 header {
   background: linear-gradient(45deg, #333, #888);
-  padding: 10px 20px; /* Aumenta o espaço interno do cabeçalho */
+  padding: 10px 20px;
   display: flex;
-  justify-content: space-between; /* Espaça os elementos do cabeçalho */
-  align-items: center; /* Alinha verticalmente todos os itens */
-  height: 60px; /* Altura do cabeçalho */
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
 }
 
 .adorno h1 {
   font-size: 1.5rem;
   color: gold;
-  margin: 0; /* Remove margens para melhor alinhamento */
-  white-space: nowrap; /* Impede a quebra de linha */
+  margin: 0;
+  white-space: nowrap;
 }
 
 nav {
   display: flex;
-  justify-content: center; /* Centraliza os itens do nav */
-  align-items: center; /* Alinha verticalmente os itens */
-  flex-grow: 1; /* Permite que o nav cresça para ocupar espaço */
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
 }
 
 .menu-navegacao {
   list-style-type: none;
   padding: 0;
   margin: 0;
-  display: flex; /* Exibe os itens em linha */
-  align-items: center; /* Alinha verticalmente os itens do menu */
+  display: flex;
+  align-items: center;
 }
 
 .menu-navegacao li {
-  margin: 0 1rem; /* Espaçamento entre os itens do menu */
+  margin: 0 1rem;
 }
 
 .menu-navegacao a {
@@ -49,7 +51,7 @@ nav {
   display: block;
   border-radius: 5px;
   transition: background-color 0.3s;
-} 
+}
 
 .menu-navegacao a:hover {
   background-color: #555;
@@ -57,23 +59,69 @@ nav {
 }
 
 .login-icon {
-  margin-left: auto; /* Move o ícone de perfil para a direita */
+  margin-left: auto;
 }
 
 .login-icon img {
-  width: 40px; /* Ajuste o tamanho do ícone */
+  width: 40px;
   height: auto;
   cursor: pointer;
   transition: transform 0.3s ease;
 }
 
 .login-icon img:hover {
-  transform: scale(1.1); /* Leve aumento no hover */
+  transform: scale(1.1);
 }
 
+/* Responsivo para tablets e dispositivos menores */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .menu-navegacao {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .menu-navegacao li {
+    margin: 0.5rem 0;
+  }
+
+  /* Menu Hambúrguer */
+  .menu-toggle {
+    display: block;
+    background-color: transparent;
+    border: none;
+    color: gold;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+}
+
+/* Menu visível ao clicar no hambúrguer */
+.menu-navegacao.active {
+  display: flex;
+}
+
+.login-icon img {
+  width: 40px;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.login-icon img:hover {
+  transform: scale(1.1);
+}
+
+/* Corpo Principal */
 main {
   padding: 1.4rem;
   margin: 0 auto;
+  flex-grow: 1;
 }
 
 .container {
@@ -81,16 +129,16 @@ main {
   flex-wrap: wrap;
   background-color: #555;
   border-radius: 0.5rem;
-  justify-content: center; /* Centraliza os itens caso tenha menos de 6 */
-  gap: 1.5rem; /* Espaçamento entre os produtos */
+  justify-content: center;
+  gap: 1.5rem;
   padding: 1rem;
   max-width: 1200px;
   margin: 3rem auto;
 }
 
-/* Cada produto ocupará até 30% do container, permitindo 3 por linha */
+/* Exibição de Produto */
 .exibicao {
-  flex: 1 1 calc(30% - 1.5rem); /* 3 produtos por linha */
+  flex: 1 1 calc(30% - 1.5rem);
   background-color: #ffffff;
   margin: 1.5rem;
   box-shadow: 0 0.125rem 0.250rem rgba(0, 0, 0, 0.2);
@@ -105,7 +153,6 @@ main {
   max-width: 100%;
   height: auto;
   object-fit: contain;
-  object-position: center;
   padding: 1rem 0;
 }
 
@@ -114,27 +161,11 @@ main {
   box-shadow: 0 0.250rem 0.5rem rgba(0, 0, 0, 0.3);
 }
 
-.exibicao .info {
-  padding: 1rem;
-}
-
 .exibicao .titulo {
   font-size: 1.2rem;
   font-weight: bold;
   color: gold;
   margin-bottom: 0.5rem;
-}
-
-.exibicao .descricao {
-  font-size: 1rem;
-  color: #888;
-  margin: 0.5rem 0;
-}
-
-.exibicao .cor {
-  font-size: 0.9rem;
-  color: #888;
-  margin: 0.5rem 0;
 }
 
 .exibicao input[type="button"] {
@@ -151,64 +182,172 @@ main {
   background-color: #555;
 }
 
-/* Responsividade para 2 produtos em telas menores */
-@media (max-width: 768px) {
-  .exibicao {
-      flex: 1 1 calc(45% - 1.5rem); /* 2 produtos por linha */
-  }
-}
-
-/* Responsividade para 1 produto em telas muito pequenas */
-@media (max-width: 480px) {
-  .exibicao {
-      flex: 1 1 100%; /* 1 produto por linha */
-  }
-}
-
 /* Seção de Sobre Nós */
-.sobre-nos {
-  border-radius: 20px 20px 0 0;
+.sobre-nos-secao {
+  position: relative;
+  color: white;
+  min-height: 100vh;
   padding: 3rem 1rem;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.sobre-nos-secao::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('/assets/img/FundoSobreNos.png');
+  background-size: cover;
+  background-position: center;
+  filter: blur(10px);
+  z-index: -1;
+}
+
+.sobre-nos-container {
   background-color: #333;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  color: #f9f9f9;
+  margin-top: 2rem;
   text-align: center;
 }
 
-.sobre-nos h2 {
-  font-size: 2.5rem;
+.sobre-nos-titulo {
+  font-size: 1.5rem;
   color: gold;
   margin-bottom: 1.5rem;
   font-weight: bold;
 }
 
-.sobre-nos p {
-  font-size: 1.2rem;
+.sobre-nos-paragrafo {
+  font-size: 1rem;
   color: #ccc;
   max-width: 700px;
   margin: 0 auto;
   line-height: 1.8;
+  margin-bottom: 1.5rem;
 }
+
 
 /* Seção de Contato */
 .contato {
-  border-radius: 0 0 20px 20px;
-  padding: 3rem 1rem;
+  padding: 2rem 1rem;
   background-color: #555;
   text-align: center;
   color: gold;
+  border-radius: 2rem;
 }
 
 .contato h2 {
-  font-size: 2.5rem;
+  font-size: 2rem;
   margin-bottom: 1.5rem;
   font-weight: bold;
 }
 
 .contato p {
-  font-size: 1.2rem;
+  font-size: 1rem;
   margin-bottom: 0.5rem;
 }
 
-/* intro */
+/* Footer */
+footer {
+  background-color: #000;
+  color: #f9f9f9;
+  text-align: center;
+  padding: 1.5rem 0;
+  border-top: 3px solid gold;
+}
+
+footer p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #888;
+}
+
+
+
+/* Contato */
+#contato-container {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  background-color: #555;
+  border-radius: 0.5rem;
+  padding: 2rem;
+  color: #f9f9f9;
+}
+
+#contato-container h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: gold;
+}
+
+.informacoes {
+  background: #989898;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: #fff;
+  margin-bottom: 1.5rem;
+}
+
+.informacoes h3 {
+  color: gold;
+  text-align: center;
+}
+
+.informacoes p {
+  margin: 0.5rem 0;
+  text-align: center;
+}
+
+.informacoes a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.informacoes a:hover {
+  text-decoration: underline;
+}
+
+form {
+  background-color: #555;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+}
+
+.form-group label {
+  font-weight: bold;
+  color: #f9f9f9;
+}
+
+.form-control {
+  background-color: #fff;
+  color: #333;
+}
+
+.btn-success {
+  background-color: gold;
+  border: none;
+}
+
+.btn-success:hover {
+  background-color: #d4af37;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border: none;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+}
+
 .intro {
   background: linear-gradient(135deg, #333, #888);
   padding: 1.5rem;
@@ -231,109 +370,262 @@ main {
   line-height: 1.5;
   margin: 0 auto;
   color: #f9f9f9;
+} 
+
+/* Estilização da página de exibição de um produto */
+
+/* Container principal */
+.produto-detalhes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 20px;
+  background-color: #555;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* footer */
-footer {
-  background-color: #000;
-  color: #f9f9f9;
+/* Título do produto */
+.produto-detalhes h2 {
   text-align: center;
-  padding: 1.5rem 0;
-  border-top: 3px solid gold;
-  margin-top: 2rem;
-}
-
-footer p {
-  margin: 0;
-  font-size: 0.9rem;
-  color: #888;
-}
-
-
-#contato-container {
-  margin-top: 2rem;
-  background-color: #555; /* Cor do cabeçalho */
-  border-radius: 0.5rem; /* Bordas arredondadas */
-  padding: 2rem;
-  color: #f9f9f9; /* Texto claro para contraste */
-}
-
-#contato-container h1 {
-  text-align: center; /* Centraliza o título */
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-  color: gold; /* Espaço abaixo do título */
-}
-
-.informacoes {
-  background: #989898; /* Fundo escuro para informações de contato */
-  padding: 1.5rem;
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
-  color: #fff; /* Cor do texto clara para contraste */
-  margin-bottom: 1.5rem; /* Espaço abaixo da seção de informações */
-}
-
-.informacoes h3 {
-  color: gold; /* Título em dourado */
-  text-align: center; /* Centraliza o título */
-}
-
-.informacoes p {
-  margin: 0.5rem 0; /* Espaço entre os parágrafos */
-  text-align: center; /* Centraliza o texto dos parágrafos */
-}
-
-.informacoes p > strong {
+  font-size: 2em;
+  margin-bottom: 20px;
   color: gold;
 }
 
-.informacoes a {
-  color: inherit; /* Mantém a cor do texto do parágrafo */
-  text-decoration: none; /* Remove o sublinhado */
+/* Imagem do produto */
+.produto-imagem {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.informacoes a:hover {
-  text-decoration: underline; /* Adiciona sublinhado ao passar o mouse */
+/* Informações do produto */
+.produto-info {
+  font-size: 1.1em;
+  color: white;
+  text-align: center;
 }
 
-
-form {
-  background-color: #555; /* Cor do cabeçalho para o formulário */
-  padding: 1.5rem; /* Espaçamento interno do formulário */
-  border-radius: 0.5rem; /* Bordas arredondadas */
+.produto-info p {
+  margin: 10px 0;
 }
 
-.form-group label {
-  font-weight: bold; /* Negrito para rótulos */
-  color: #f9f9f9; /* Cor clara para os rótulos */
+.produto-info p strong {
+  color: gold;
+  font-weight: 600;
 }
 
-.form-group .p {
+/* Formulário para quantidade e botão */
+/* Container principal */
+.produto-detalhes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 20px;
+  background-color: #555;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Título do produto */
+.produto-detalhes h2 {
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 20px;
   color: gold;
 }
 
-.form-control {
-  background-color: #fff; /* Fundo branco para campos de entrada */
-  color: #333; /* Cor do texto nos campos de entrada */
+/* Imagem do produto */
+.produto-imagem {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.btn-success {
-  background-color: gold; /* Cor do botão de enviar */
-  border: none; /* Remove a borda do botão */
+/* Container principal */
+.produto-detalhes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 20px;
+  background-color: #555;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.btn-success:hover {
-  background-color: #d4af37; /* Cor do botão no hover */
+/* Título do produto */
+.produto-detalhes h2 {
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: gold;
 }
 
-.btn-danger {
-  background-color: #dc3545; /* Cor do botão de cancelar */
-  border: none; /* Remove a borda do botão */
+/* Imagem do produto */
+.produto-imagem {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.btn-danger:hover {
-  background-color: #c82333; /* Cor do botão no hover */
+/* Informações do produto */
+.produto-info {
+  font-size: 1.1em;
+  color: white;
+  text-align: center;
 }
 
+.produto-info p {
+  margin: 10px 0;
+}
+
+.produto-info p strong {
+  color: gold;
+  font-weight: 600;
+
+}
+
+/* Ações do produto */
+.produto-acoes {
+  display: flex;
+  justify-content: space-between; /* Alinha os elementos com espaço entre eles */
+  align-items: center; /* Alinha verticalmente */
+  margin-top: 20px; /* Margem superior para espaçamento */
+  width: 100%; /* Para garantir que ocupe a largura total do container */
+}
+
+/* Formulário para quantidade e botão */
+.produto-form {
+  display: flex;
+  align-items: center; /* Alinha verticalmente a label e o input */
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column; /* Coloca a label acima do input para um estilo de formulário padrão */
+  align-items: flex-start; /* Alinha a label e o input à esquerda */
+  margin-bottom: 0.5rem; /* Espaçamento entre cada grupo de label e input */
+}
+
+.quantidade-container {
+  display: flex; /* Usando flexbox para alinhar os elementos lado a lado */
+  align-items: center; /* Alinhamento vertical central */
+  margin-bottom: 1rem; /* Espaçamento abaixo do container */
+}
+
+.quantidade-container label {
+  margin-right: 0.5rem; /* Espaçamento à direita do label */
+  color:gold;
+}
+
+.quantidade-input {
+  width: 60px;
+  padding: 8px;
+  font-size: 1em;
+  text-align: center;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  background-color: #f7f7f7;
+  transition: border-color 0.3s;
+  margin-right: 0.5rem; /* Espaçamento à direita do input */
+}
+
+.quantidade-input:focus {
+  outline: none;  
+  border-color: gold;
+}
+
+.btn-adicionar {
+  padding: 8px 12px; /* Padding para o botão */
+  font-size: 1em; /* Tamanho da fonte do botão */
+  border: none; /* Remover borda padrão */
+  border-radius: 5px; /* Bordas arredondadas */
+  background-color: #28a745; /* Cor de fundo do botão */
+  color: white; /* Cor do texto do botão */
+  cursor: pointer; /* Cursor de mão para indicar que é clicável */
+  transition: background-color 0.3s; /* Efeito de transição */
+}
+
+.btn-adicionar:hover {
+  background-color: #218838; /* Cor do botão ao passar o mouse */
+}
+
+
+/* Botão Adicionar ao Carrinho */
+.btn-adicionar {
+  background-color: gold;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-adicionar:hover {
+  background-color: #32ff04;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+  .produto-detalhes {
+      padding: 15px;
+  }
+
+  .produto-imagem {
+      width: 100%;
+      max-width: 100%;
+  }
+}
+
+
+.background-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/img/academia.webp'); /* Caminho da imagem */
+  background-size: cover;
+  background-position: center;
+  filter: blur(8px); /* Desfoque */
+  z-index: -1; /* Coloca a imagem de fundo atrás do conteúdo */
+}
+
+.main-content {
+  position: relative;
+  z-index: 1;
+  background-color: rgba(255, 255, 255, 0.9); /* Fundo branco com transparência para contraste */
+  padding: 20px;
+  border-radius: 8px;
+}; 
+
+/* Carrinho   */
+
+
+.carrinho-container {
+  background-image: url('/img/academia.jpg'); /* Substitua pelo caminho da sua imagem */
+  background-size: cover; /* Faz a imagem cobrir todo o container */
+  background-position: center; /* Centraliza a imagem */
+  min-height: 100vh; /* Garante que o container tenha altura mínima */
+  padding: 20px; /* Adiciona um espaço interno */
+  color: white; /* Cor do texto para contraste */
+}
 

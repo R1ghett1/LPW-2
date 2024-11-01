@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrar</title>
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}"> <!-- Link para seu CSS -->
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}"> 
     <style>
         body {
             margin: 0;
-            height: 100vh; /* Para garantir que a imagem cubra toda a tela */
-            overflow: hidden; /* Para evitar rolagem */
-            position: relative; /* Para o posicionamento do fundo */
+            height: 100vh; 
+            overflow: hidden; 
+            position: relative; 
         }
 
         .background {

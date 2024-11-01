@@ -36,7 +36,7 @@ class AuthController extends Controller
         Auth::login($user);
 
         // Redirecionar para a dashboard ou outra página
-        return redirect()->intended('home.index')->with('success', 'Registro bem-sucedido!');
+        return redirect()->intended('/home/index')->with('success', 'Registro bem-sucedido!');
     }
 
     // Mostrar o formulário de login
@@ -48,23 +48,38 @@ class AuthController extends Controller
     // Fazer login do usuário
     public function login(Request $request)
     {
-        // Validação dos dados
         $credentials = $request->validate([
             'email' => 'required|string|email',
             'password' => 'required|string',
         ]);
 
-        // Verificar as credenciais e autenticar o usuário
         if (Auth::attempt($credentials)) {
-            // Login bem-sucedido
             $request->session()->regenerate();
 
-            return redirect()->intended('dashboard')->with('success', 'Login bem-sucedido!');
+            $user = Auth::user();
+
+            // Verifica se o usuário específico está fazendo login
+            if ($user->email === 'kayky@gmail.com' && $user->name === 'kayky' && Hash::check('12345678', $user->password)) {
+                return redirect()->intended('/home/carrinho')->with('success', 'Login bem-sucedido!'); // Redireciona para a área segura
+            }
+
+            // Redireciona para a página padrão (ou dashboard) se não for o usuário específico
+            return redirect()->intended('/')->with('success', 'Login bem-sucedido!');
         }
 
         // Se as credenciais estiverem erradas
         return back()->withErrors([
             'email' => 'As credenciais fornecidas estão incorretas.',
         ]);
+    }
+
+    // Logout do usuário
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/')->with('success', 'Você foi desconectado com sucesso!');
     }
 }

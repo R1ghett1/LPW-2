@@ -1,6 +1,7 @@
 @extends('home.backup')
 
 @section('conteudo')
+
 <div id="contato-container" class="col-md-6 offset-md-3">
     <h1>Entre em Contato Conosco</h1>  
     <p>Se você tiver alguma dúvida ou precisar de assistência, sinta-se à vontade para nos contatar através dos meios abaixo.</p>
@@ -20,23 +21,25 @@
         </div>
 
         <div class="form-group">
-            <label for="email"  class="p">Email:</label>
+            <label for="email" class="p">Email:</label>
             <input type="email" class="form-control" id="email" name="email" required>
         </div>
 
         <div class="form-group">
-            <label for="telefone"  class="p">Telefone:</label>
-            <input type="telefone" class="form-control" id="telefone" name="telefone" required>
+            <label for="telefone" class="p">Telefone:</label>
+            <input type="tel" class="form-control" id="telefone" name="telefone" required>
         </div>
 
         <div class="form-group">
-            <label for="mensagem"  class="p">Mensagem:</label>
+            <label for="mensagem" class="p">Mensagem:</label>
             <textarea class="form-control" id="mensagem" name="mensagem" rows="5" required></textarea>
         </div>
 
         <br>
-        <a href="/" class="btn btn-danger">Cancelar</a>
-        <input type="submit" class="btn btn-success" value="Enviar Mensagem">
+        <div class="form-buttons">
+            <a href="/" class="btn btn-danger">Cancelar</a>
+            <input type="submit" class="btn btn-success" value="Enviar Mensagem">
+        </div>
     </form>    
 </div>
 @endsection

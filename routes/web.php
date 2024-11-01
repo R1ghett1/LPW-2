@@ -8,42 +8,47 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContatoController;
+use App\Http\Controllers\CarrinhoController;
+use App\Http\Controllers\PagamentoController;
 
 Route::middleware('auth')->group(function () {
 
-    Route::get('/login', function () {
-        return view("admin.login");
-    })->name('login');
+    Route::get('/checkout', [PagamentoController::class, 'criarPagamento'])->name('checkout');
 
-    // Rotas por GET (receber dados) 
-    Route::get('/', [PaginaController::class, 'index']) -> name('paginaAdministrativa'); 
+    Route::get('/', [PaginaController::class, 'index'])->name('paginaAdministrativa');
 
-    //Rota para exibir Crud Usuário
+    // Rotas para CRUD Usuário
     Route::resource('usuario', UsuarioController::class);
-    Route::get('/usuario', [UsuarioController::class, 'show']) -> name('usuario.index');
+    Route::get('/usuario', [UsuarioController::class, 'show'])->name('usuario.index');
 
-    //Rota para exibir Crud Categoria
-    Route::resource('categoria', CategoriaController::class)->parameters(['categoria' => 'categoria',]);
+    // Rotas para CRUD Categoria
+    Route::resource('categoria', CategoriaController::class)->parameters(['categoria' => 'categoria']);
 
-    //Rota para exibir Crud Produto
+    // Rotas para CRUD Produto
     Route::resource('produto', ProdutoController::class);
 
     Route::get('/contato', [ContatoController::class, 'index'])->name('contato.index');
-    
+    Route::put('/carrinho/update/{item}', [CarrinhoController::class, 'update'])->name('carrinho.update');
+    Route::delete('/carrinho/delete/{item}', [CarrinhoController::class, 'destroy'])->name('carrinho.destroy');
+    Route::get('/carrinho', [CarrinhoController::class, 'index'])->name('carrinho.index');
+ 
+
+
+    // Rotas para gerenciar produtos no carrinho
+    Route::get('/home/show/{id}', [HomeController::class, 'show'])->name('home.show');
+    Route::post('/home/show/{id}', [HomeController::class, 'adicionar'])->name('carrinho.adicionar');
 });
 
-Route::get('/home/index', [HomeController::class, 'home']) -> name('home.index'); 
-Route::get('/home/produtos', [HomeController::class, 'produtos']) -> name('home.produtos'); 
+// Rotas públicas
+Route::get('/home/index', [HomeController::class, 'home'])->name('home.index');
+Route::get('/home/produtos', [HomeController::class, 'produtos'])->name('home.produtos');
+Route::get('/home/sobre-nos', [HomeController::class, 'sobreNos'])->name('home.sobre-nos');
 
-Route::get('/home/show/{id}', [HomeController::class, 'show'])->name('home.show');
-
+// Rotas de contato
 Route::get('/home/contato', [ContatoController::class, 'showForm'])->name('contato.show');
 Route::post('/home/contato', [ContatoController::class, 'enviar'])->name('contato.enviar');
 
-
-
-
-//rotas de autenticação de usuário 
+// Rotas de autenticação de usuário 
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
 Route::post('/register', [AuthController::class, 'register']);
 
